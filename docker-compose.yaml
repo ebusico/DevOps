@@ -1,0 +1,36 @@
+version: '3.7'
+services: 
+  nginx: 
+    image: nginx
+    volumes:
+      - "./nginx.conf:/etc/nginx/nginx.conf"
+      - "/etc/letsencrypt/:/etc/letsencrypt/"
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - front
+      - room
+  front: 
+    image: front-end
+    build: ./Front-End
+  room:
+    image: room-api
+    build: ./Rooms-Api
+  tenant: 
+    image: tenant-api
+    build: ./Tenant-Api
+  building:
+    image: building-api
+    build: ./Building-Api
+  landlord:
+    image: landlord-api
+    build: ./Landlord-Api
+  eureka:
+    image: eureka-api
+    build: ./Eureka-Api
+  maintenance: 
+    image: maintenance-api
+    build: ./Maintenance-Api
+  mongo:
+    image: mongo

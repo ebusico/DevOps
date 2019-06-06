@@ -1,2 +1,1 @@
-# DevOps
-For QA DevOps team
+# Dev-Ops
