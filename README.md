@@ -18,9 +18,9 @@ Use Ansible to automate the deployment of Bursary Management application onto an
 
 ## Planning
 
+### Application source and installation
 A deployable version of the Bursary Management application can be found [here](https://github.com/ebusico/bursaryproject/tree/aws/bursary-app-v1). The application is based on the MERN stack (MongoDB, Express, React, Nodejs) and currently consists of three major parts. These are a MongoDB database, an Express/Node application (which is found in the NodeExpress folder), and a React application (found in the React folder). The steps required to install each of these components is included within the readme.md file found in the repository branch 'aws/bursary-app-v1' and have also been summarised below. 
 
-<br/>
  
 #### Mongo 
 * Install software from [link](https://www.mongodb.com/download-center/community).
@@ -37,4 +37,6 @@ A deployable version of the Bursary Management application can be found [here](h
 * run commands (npm install, npm start) in React folder.
 * navigate to localhost:3000 to test deployment.
 
-To install the application onto a fresh virtual machine an Ansible playbook will be created. Each of the three application components will have a corrosponding play written to install them, with each play consisting of one task per each of the above bullet points. Initially the playbook will be executed locally, and each task performed using Ansible modules and shell commands. Once this playbook has been successfully written, it will then be refactored to instead run remotely, and use containerisation with Docker. We will then explore possible extensions to this part of the pipeline, including use of Terraform to set-up cloud servers automatically, AWS database options, etc.
+### Using Ansible
+
+To install the application onto a fresh virtual machine an Ansible playbook will be created. Each of the three application components will have a corrosponding play written to install them, with each play consisting of one task per each of the above bullet points. Initially the playbook will be executed locally, and each task performed using Ansible modules and shell commands. Once this playbook has been successfully written, it will then be refactored to instead run remotely, and use containerisation with Docker. We will then explore possible extensions to this part of the pipeline, including Terraform.
