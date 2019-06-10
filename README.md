@@ -7,7 +7,7 @@ Use Ansible to automate the deployment of Bursary Management application onto an
 
 ### Tasks
 
-* Learn how to use (Anisble)[https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html?extIdCarryOver=true&sc_cid=701f2000001OH7YAAW].
+* Learn how to use [Anisble](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html?extIdCarryOver=true&sc_cid=701f2000001OH7YAAW).
 * Get deployable version of application.
 * Determine all steps required to install application onto a fresh VM.
 * Set-up Ansible code to deploy application to a cloud-hosted VM instance via SSH.
