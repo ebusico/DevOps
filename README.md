@@ -21,16 +21,16 @@ Use Ansible to automate the deployment of Bursary Management application onto an
 A deployable version of the Bursary Management application can be found [here](https://github.com/ebusico/bursaryproject/tree/aws/bursary-app-v1). The application is based on the MERN stack (MongoDB, Express, React, Nodejs) and currently consists of three major parts. These are a MongoDB database, an Express/Node application (which is found in the NodeExpress folder), and a React application (found in the React folder). The steps required to install each of these components is included within the readme.md file found in the repository branch 'aws/bursary-app-v1' and are summarised below. 
 
 #### Mongo 
-* installed from [link](https://www.mongodb.com/download-center/community)
-* add install directory to enviroment variables
-* run commands (mongod, mongo, use trainees)
+* Install software from [link](https://www.mongodb.com/download-center/community).
+* Add install directory to enviroment variables.
+* Run commands ('mongod', 'mongo', 'use trainees').
 
 #### Express/Node
-* go to NodeExpress folder from git repo, edit .env file with ip addresses of deployment server
-* create admin account (if localhost)
-* run commands (npm install, node server.js) in NodeExpress folder
+* Navigate to 'NodeExpress' folder in repository, edit .env file with ip addresses of deployment server.
+* Create admin account (if localhost).
+* Run commands ('npm install', 'node server.js') in 'NodeExpress' folder.
 
 #### React
-* go to React folder from git repo, edit .env file with ip addresses of deployment server
-* run commands (npm install, npm start) in React folder
-* navigate to localhost:3000 to test deployment
+* Navigate to 'React' folder in repository, edit .env file with ip addresses of deployment server.
+* run commands (npm install, npm start) in React folder.
+* navigate to localhost:3000 to test deployment.
