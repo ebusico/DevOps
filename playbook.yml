@@ -1,0 +1,44 @@
+---
+- name: Install MongoDB
+  hosts: gcpservers
+  remote_user: lukeajones1996
+  become: yes
+  become_method: sudo
+  tasks:
+  - name: Update packages
+    apt:
+        name: "*"
+        state: latest
+  - name: Upgrade packages
+    apt:
+        upgrade: dist
+
+  - name: Add MongoDB public GPG Key
+    apt_key:
+        keyserver: "hkp://keyserver.ubuntu.com:80"
+        id: EA312927
+        state: present
+
+  - name: Create MongoDB source list
+    apt_repository:
+        filename: '/etc/apt/sources.list.d/mongodb-org-3.2.list'
+        repo: 'deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.2 multiverse'
+        state: present
+        update_cache: yes
+
+
+  - name: Update packages
+    apt:
+        name: "*"
+        state: latest
+
+  - name: Install MongoDB package
+    apt:
+        name: mongodb-org
+        state: latest
+        update_cache: yes
+
+  - name: Start MongoDB service
+    service:
+            name: mongod
+            state: started
