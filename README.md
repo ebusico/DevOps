@@ -37,6 +37,8 @@ A deployable version of the Bursary Management application can be found [here](h
 * run commands (npm install, npm start) in React folder.
 * navigate to localhost:3000 to test deployment.
 
+<br/>
+
 ### Using Ansible
 
 To install the application onto a fresh virtual machine an Ansible playbook will be created. Each of the three application components will have a corrosponding play written to install them, with each play consisting of one task per each of the above bullet points. Initially the playbook will be executed locally, and each task performed using Ansible modules and shell commands. Once this playbook has been successfully written, it will then be refactored to instead run remotely, and use containerisation with Docker. We will then explore possible extensions to this part of the pipeline, including Terraform.
