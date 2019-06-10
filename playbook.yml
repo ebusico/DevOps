@@ -1,7 +1,6 @@
 ---
 - name: Install MongoDB
   hosts: gcpservers
-  remote_user: lukeajones1996
   become: yes
   become_method: sudo
   tasks:
