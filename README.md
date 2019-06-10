@@ -10,8 +10,8 @@ Use Ansible to automate the deployment of Bursary Management application onto an
 * Learn how to use [Anisble](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html?extIdCarryOver=true&sc_cid=701f2000001OH7YAAW).
 * Get deployable version of application.
 * Determine all steps required to install application onto a fresh VM.
-* Set-up Ansible code to deploy application to a cloud-hosted VM instance via SSH.
-* Get containerisation code from other team memeber and implement.
+* Implement application installation using an Ansible playbook.
+* Get containerisation details from other team memeber and implement.
 * Investigate use of Terraform.
 
 <br/>
@@ -23,14 +23,16 @@ A deployable version of the Bursary Management application can be found [here](h
 #### Mongo 
 * Install software from [link](https://www.mongodb.com/download-center/community).
 * Add install directory to enviroment variables.
-* Run commands ('mongod', 'mongo', 'use trainees').
+* Run setup commands ('mongod', 'mongo', 'use trainees').
 
 #### Express/Node
 * Navigate to 'NodeExpress' folder in repository, edit .env file with ip addresses of deployment server.
 * Create admin account (if localhost).
-* Run commands ('npm install', 'node server.js') in 'NodeExpress' folder.
+* Run setup commands ('npm install', 'node server.js') in 'NodeExpress' folder.
 
 #### React
 * Navigate to 'React' folder in repository, edit .env file with ip addresses of deployment server.
 * run commands (npm install, npm start) in React folder.
 * navigate to localhost:3000 to test deployment.
+
+To install the application onto a fresh virtual machine an Ansible playbook will be created. Each of the three application components will have a corrosponding play written to install them, with each play consisting of one task per each of the above bullet points. Initially the playbook will be executed locally, and each task performed using Ansible modules and shell commands. Once this playbook has been successfully written, it will then be refactored to instead run remotely, and use containerisation with Docker. We will then explore possible extensions to this part of the pipeline, including use of Terraform to set-up cloud servers automatically, AWS database options, etc.
