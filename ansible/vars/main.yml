@@ -1,0 +1,10 @@
+#
+#Pre-tasks
+packages: 
+      - software-properties-common
+      - python
+      - nodejs
+      - npm
+      - mongodb
+
+external_ip: 35.195.229.179

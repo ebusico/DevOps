@@ -1,0 +1,20 @@
+ - name: Ensure npm and nodejs are installed
+   apt:
+       name: "{{ react_dependencies }}"
+       state: latest
+       update_cache: yes
+
+ - name: Send React files
+   copy:
+       src: "{{ react_src }}"
+       dest: "{{ react_dest }}"
+       owner: "{{ react_user }}"
+
+ - name: Edit .env file
+   shell: echo "REACT_APP_AWS_IP={{ external_ip }}" >  {{ react_dest }}/.env
+
+ - name: Launch react app
+   shell: |
+        cd {{ react_dest }}/React
+        sudo npm install
+        sudo npm start

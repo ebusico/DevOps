@@ -1,0 +1,15 @@
+ - name: Install MongoDB package
+   apt:
+       name: "{{ mongodb_package }}"
+       state: latest
+       update_cache: yes
+
+ - name: Start MongoDB service
+   systemd:
+       name: "{{ mongodb_service }}"
+       state: started
+
+ - name: Ensure MongoDB service is running
+   service:
+       name: "{{ mongodb_package }}"
+       state: started
