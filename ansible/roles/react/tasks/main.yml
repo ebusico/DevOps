@@ -20,7 +20,7 @@
    shell: |
        chmod --recursive {{ access_mode }} {{ react_dest}}/
        cd {{ react_dest }}
-       npm install
+       sudo npm install
        npm run-script build
 
  - name: Start nginx service
