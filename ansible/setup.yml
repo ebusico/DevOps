@@ -1,9 +1,9 @@
 ---
 - name: Update all modules
   apt:
+     force_apt_get: yes
      name: "*"
      state: latest
-     force_apt_get: yes
 
 - name: Upgrade all modules
   apt:

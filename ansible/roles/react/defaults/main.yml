@@ -1,6 +1,0 @@
-react_src: '~/bursaryproject/React'
-react_dest: '/tmp/ReactApp'
-react_user: lukeajones1996
-react_dependencies:
-        - npm
-        - nodejs
