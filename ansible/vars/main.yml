@@ -1,0 +1,10 @@
+#
+#Pre-tasks
+packages: 
+      - software-properties-common
+      - python
+      - npm
+      - nodejs
+      - nginx
+
+external_ip: 34.77.55.143

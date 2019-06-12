@@ -1,0 +1,14 @@
+---
+- name: Update all modules
+  apt:
+     force_apt_get: yes
+     name: "*"
+     state: latest
+
+- name: Upgrade all modules
+  apt:
+     upgrade: dist
+
+- name: Install system dependencies
+  apt:
+     name: "{{ packages }}" 

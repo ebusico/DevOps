@@ -1,0 +1,43 @@
+ - name: Ensure nginx, npm and nodejs are installed
+   apt:
+       name: "{{ react_dependencies }}"
+       state: latest
+       update_cache: yes
+
+ - name: Send React files
+   copy:
+       directory_mode: yes
+       src: "{{ react_src }}"
+       dest: "{{ react_dest }}"
+       owner: "{{ react_user }}"
+       group: "{{ react_user }}"
+       mode: "{{ access_mode }}"
+
+ - name: Edit .env file
+   shell: echo "REACT_APP_AWS_IP={{ external_ip }}" >  {{ react_dest }}/.env
+
+ - name: Build react app
+   shell: |
+       chmod --recursive {{ access_mode }} {{ react_dest}}/
+       cd {{ react_dest }}
+       sudo npm install
+       npm run-script build
+
+ - name: Start nginx service
+   systemd:
+       name: nginx
+       state: started
+
+ - name: Ensure nginx is running
+   service:
+       name: nginx
+       state: started
+
+ - name: Add nginx config file
+   copy:
+       force: yes
+       src:  "{{ nginx_src }}"
+       dest: "{{ nginx_dest }}"
+ 
+ - name: Reload nginx service
+   shell: nginx -s reload

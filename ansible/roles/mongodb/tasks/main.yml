@@ -1,0 +1,29 @@
+ - name: Import MongoDB public GPG Key
+   apt_key:
+       keyserver: "{{ mongodb_keyserver }}"
+       id: "{{ mongodb_key_id }}"
+       state: present
+
+ - name: Create MongoDB list file
+   lineinfile: 
+       line: "{{ mongodb_file_src }} "
+       dest: "{{ mongodb_file_dest }} "
+       state: present
+       create: yes
+
+ - name: Install MongoDB package and reload local packages.
+   apt:
+       name: "{{ mongodb_package }}"
+       state: latest
+       update_cache: yes
+       force_apt_get: yes
+
+ - name: Start MongoDB service
+   systemd:
+       name: "{{ mongodb_service }}"
+       state: started
+
+ - name: Ensure MongoDB service is running
+   service:
+       name: "{{ mongodb_package }}"
+       state: started

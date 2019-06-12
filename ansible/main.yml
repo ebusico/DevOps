@@ -1,0 +1,17 @@
+---
+- hosts: gcpservers
+  become: true
+  become_method: sudo
+  pre_tasks:
+    - include_vars: vars/main.yml      
+    - include_tasks: setup.yml
+      tags:
+        - setup
+
+  roles:
+        - { name: mongodb, become: true, become_method: sudo }
+        - { name: react, become: true, become_method: sudo }  
+  
+  post_tasks:
+    - name: End state
+      shell: echo 'End'
