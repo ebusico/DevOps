@@ -1,14 +1,23 @@
 ---
-- name: Update all modules
-  apt:
-     force_apt_get: yes
-     name: "*"
-     state: latest
+ - name: Update all modules
+   apt:
+      name: "*"
+      state: latest
 
-- name: Upgrade all modules
-  apt:
-     upgrade: dist
+ - name: Upgrade all modules
+   apt:
+      upgrade: dist
 
-- name: Install system dependencies
-  apt:
-     name: "{{ packages }}" 
+ - name: Install system dependencies
+   apt:
+      name: "{{ packages }}" 
+
+ - name: Delete old ansible files
+   file:
+      path: '/tmp/ansible*'
+      state: absent
+
+ - name: Delete old react files
+   file:
+      path: '/tmp/ReactApp'
+      state: absent
