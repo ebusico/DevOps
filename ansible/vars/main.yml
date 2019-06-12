@@ -3,8 +3,5 @@
 packages: 
       - software-properties-common
       - python
-      - nodejs
-      - npm
-      - mongodb
 
-external_ip: 35.195.229.179
+external_ip: 34.77.55.143

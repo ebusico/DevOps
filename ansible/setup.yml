@@ -3,6 +3,7 @@
   apt:
      name: "*"
      state: latest
+     force_apt_get: yes
 
 - name: Upgrade all modules
   apt:
