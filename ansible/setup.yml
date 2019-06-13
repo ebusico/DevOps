@@ -1,23 +1,32 @@
 ---
- - name: Update all modules
+ - name: Update all modules.
    apt:
       name: "*"
       state: latest
 
- - name: Upgrade all modules
+ - name: Upgrade all modules.
    apt:
       upgrade: dist
 
- - name: Install system dependencies
+ - name: Install system dependencies.
    apt:
       name: "{{ packages }}" 
 
- - name: Delete old ansible files
+ - name: Delete old Ansible files.
    file:
       path: '/tmp/ansible*'
       state: absent
 
- - name: Delete old react files
+ - name: Delete old reactApp files.
    file:
-      path: '/tmp/ReactApp'
+      path: '/tmp/reactApp'
       state: absent
+
+ - name: Delete old nodeExpressApp files.
+   file:
+      path: '/tmp/nodeExpressApp'
+      state: absent
+
+ - name: Reload systemctl daemon.
+   systemd:
+      daemon_reload: yes

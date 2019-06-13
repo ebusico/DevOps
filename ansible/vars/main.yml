@@ -3,8 +3,9 @@
 packages: 
       - software-properties-common
       - python
+      - python-pip
       - npm
       - nodejs
       - nginx
 
-external_ip: 34.77.55.143
+external_ip: 35.195.229.179

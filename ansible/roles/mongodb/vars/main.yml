@@ -1,6 +1,12 @@
-mongodb_package: mongodb
-mongodb_service: mongodb
-mongodb_keyserver: keyserver.ubuntu.com
-mongodb_key_id: 9DA31620334BD75D9DCB49F368818C72E52529D4
+mongodb_package: 'mongodb'
+mongodb_service: 'mongodb'
+mongodb_keyserver: 'keyserver.ubuntu.com'
+mongodb_key_id: '9DA31620334BD75D9DCB49F368818C72E52529D4'
 mongodb_file_src: "deb https://repo.mongodb.org/apt/ubuntu/dists/bionic/mongodb-org/4.0/multiverse/binary-amd64/ " 
 mongodb_file_dest: "/etc/apt/sources.list.d/mongodb-org-4.0.list"
+mongodb_db_name: 'trainees'
+mongodb_admin_user: 'admin'
+mongodb_admin_password: 'pass'
+mongodb_admin_roles: userAdminAnyDatabase,readWriteAnyDatabase
+mongodb_login_user: 'admin'
+mongodb_login_password: 'adam'

@@ -10,7 +10,8 @@
 
   roles:
         - { name: mongodb, become: true, become_method: sudo }
-        - { name: react, become: true, become_method: sudo }  
+        - { name: react, become: true, become_method: sudo }
+        - { name: nodeExpress, become: true, become_method: sudo }
   
   post_tasks:
     - name: End state

@@ -14,7 +14,10 @@
        mode: "{{ access_mode }}"
 
  - name: Edit .env file with correct external IP.
-   shell: echo "REACT_APP_AWS_IP={{ external_ip }}" >  {{ react_dest }}/.env
+   lineinfile:  
+       path: "{{ react_dest }}/.env"
+       regexp: '^(.*)REACT_APP_AWS_IP=localhost(.*)$'
+       line: "REACT_APP_AWS_IP={{ external_ip }}"
  
  - name: Correct access permissions on copied files.
    file:
@@ -37,6 +40,7 @@
 
  - name: Start nginx service.
    systemd:
+       daemon_reload: yes
        name: nginx
        state: started
 

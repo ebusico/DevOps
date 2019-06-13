@@ -1,0 +1,12 @@
+access_mode: 0751
+mongodb_ip: localhost
+service_src: files/nodeExpressApp.service
+service_dest: /lib/systemd/system/nodeExpressApp.service
+execStart_loc: /tmp/nodeExpressApp/server.js
+nodeExpress_src: files/bursaryproject/NodeExpress/
+nodeExpress_dest: /tmp/nodeExpressApp
+nodeExpress_user: lukeajones1996
+node_install_dir: /usr/bin/node
+nodeExpress_dependencies:
+        - npm
+        - nodejs

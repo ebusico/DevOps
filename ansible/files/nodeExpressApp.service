@@ -1,0 +1,12 @@
+[Unit]
+Description=Node Express Application Server
+After=network-online.target
+
+[Service]
+User=user
+Restart=on-failure
+WorkingDirectory=work_dir
+ExecStart=start_loc
+
+[Install]
+WantedBy=multi-user.target

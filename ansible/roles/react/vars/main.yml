@@ -2,7 +2,7 @@ access_mode: 0751
 nginx_src: files/nginx.conf
 nginx_dest: /etc/nginx/nginx.conf
 react_src: files/bursaryproject/React/
-react_dest: /tmp/ReactApp
+react_dest: /tmp/reactApp
 react_user: lukeajones1996
 react_dependencies:
         - npm

@@ -1,10 +1,14 @@
- - name: Import MongoDB public GPG Key
+ - name: Install pymongo python library
+   pip:
+       name: pymongo
+
+ - name: Import MongoDB public GPG Key.
    apt_key:
        keyserver: "{{ mongodb_keyserver }}"
        id: "{{ mongodb_key_id }}"
        state: present
 
- - name: Create MongoDB list file
+ - name: Create MongoDB list file.
    lineinfile: 
        line: "{{ mongodb_file_src }} "
        dest: "{{ mongodb_file_dest }} "
@@ -16,14 +20,31 @@
        name: "{{ mongodb_package }}"
        state: latest
        update_cache: yes
-       force_apt_get: yes
 
- - name: Start MongoDB service
+ - name: Start MongoDB service.
    systemd:
+       daemon_reload: yes
        name: "{{ mongodb_service }}"
        state: started
 
- - name: Ensure MongoDB service is running
-   service:
+ - name: Ensure MongoDB service is running.
+   systemd:
        name: "{{ mongodb_package }}"
        state: started
+
+ - name: Add mongoDB admin user.
+   mongodb_user:
+       database: admin
+       name: "{{ mongodb_admin_user }}"
+       password: "{{ mongodb_admin_password }}"
+       roles: "{{ mongodb_admin_roles }}"
+       state: present
+
+ - name: Set up trainees database and admin user.
+   mongodb_user:
+       database: "{{ mongodb_db_name }}"
+       login_user: "{{ mongodb_admin_user }}"
+       login_password: "{{ mongodb_admin_password}}"
+       name: "{{ mongodb_login_user }}"
+       password: "{{ mongodb_login_password}}"
+       state: present

@@ -1,0 +1,74 @@
+ - name: Ensure nginx, npm and nodejs are installed.
+   apt:
+       name: "{{ nodeExpress_dependencies }}"
+       state: latest
+       update_cache: yes
+
+ - name: Send NodeExpress files to remote server.
+   copy:
+       directory_mode: yes
+       src: "{{ nodeExpress_src }}"
+       dest: "{{ nodeExpress_dest }}"
+       owner: "{{ nodeExpress_user }}"
+       group: "{{ nodeExpress_user }}"
+       mode: "{{ access_mode }}"
+
+ - name: Edit .env file with React App ip.
+   lineinfile:
+           dest: "{{ nodeExpress_dest }}/.env"
+           regexp: '^(.*)REACT_APP_AWS_IP=localhost(.*)$'
+           line: 'REACT_APP_AWS_IP={{ external_ip }}'
+ 
+ - name: Edit .env file with MongoDB ip.
+   lineinfile:
+           dest: "{{ nodeExpress_dest }}/.env"
+           regexp: '^(.*)REACT_APP_DATABASE_IP=34.245.236.104(.*)$'
+           line: 'REACT_APP_DATABASE_IP={{ mongodb_ip }}'
+
+ - name: Correct access permissions on copied files.
+   file:
+        path: "{{ nodeExpress_dest }}"
+        mode: "{{ access_mode }}"
+        owner: "{{ nodeExpress_user }}"
+        group: "{{ nodeExpress_user }}"
+        state: directory
+        recurse: yes
+ 
+ - name: Install npm dependencies.
+   shell: npm install
+   args:
+      chdir: "{{ nodeExpress_dest }}"
+
+ - name: Copy over .service file.
+   copy:
+       src: "{{ service_src }}"
+       dest: "{{ service_dest }}"
+ 
+ - name: Set service user in .service file.
+   lineinfile:
+           dest: '{{ service_dest }}'
+           regexp: '^(.*)User=user(.*)$'
+           line: 'User={{ nodeExpress_user }}' 
+ 
+ - name: Set working directory in .service file.
+   lineinfile:
+           dest: '{{ service_dest }}'
+           regexp: '^(.*)WorkingDirectory=work_dir(.*)$'
+           line: 'WorkingDirectory={{ nodeExpress_dest }}/'   
+ 
+ - name: Set executable in .service file.
+   lineinfile:
+           dest: '{{ service_dest }}'
+           regexp: '^(.*)ExecStart=start_loc(.*)$'
+           line: 'ExecStart={{ node_install_dir }} {{ execStart_loc }}'
+
+ - name: Start nodeExpressApp.
+   systemd:
+       daemon_reload: yes
+       name: nodeExpressApp
+       state: started
+
+ - name: Ensure nodeExpressApp is running.
+   service:
+       name: nodeExpressApp
+       state: started
