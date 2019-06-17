@@ -31,8 +31,10 @@ The 'post_tasks' are completed at the end of the playbook, and currently consist
 <br/> 
 
 ### ~/ansible/roles - Ansible role directory:
-Each role consists of two components. A tasks/main.yml file and a vars/main.yml file. By using this convention Ansible is able to associate each variable file with the corrosponding task file for every role. This removes the need to ['include' or 'import'](https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_includes.html)) the variable files when executing the task-set associated with each role. Further information on Ansible role convention can be found in the [documentation] (https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_roles.html).
+Each role consists of two components. A tasks/main.yml task file and a vars/main.yml variable file. By using this convention Ansible is able to automatically associate each variable file with the corrosponding task file for every role. This removes the need to ['include' or 'import'](https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_includes.html) the variable files when executing the task-set associated with each role. Further information on Ansible role convention can be found in the [documentation](https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_roles.html).
 
-> **mongodb/** :
-> **react/** :
-> **nodeExpress/** :
+> **mongodb/** : This task-set is based upon the mongoDB installation documentation found [here](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/#overview). The first step is to use pip to install the pymongo python dependency. Import public GPG key for MongoDB, and create source list file. Install mongoDB package and start as service. Make sure service is running, create MongoDB admin user and then use to construct 'trainees' database.
+
+> **react/** : Ensure all required packages are installed. Send react application files to target host. Edit .env file with correct external ip address. Change access permisions on files to allow for user access. Install nodejs dependencies, and build static react app to be served. Start nginx service and overwrite config file with pre-configured settings. Reload nginx.
+
+> **nodeExpress/** : Ensure all required packages are installed. Send node-express files to host server. Edit .env files with react and mongodb ip. Correct permissions on files to allow for user access. Install nodejs dependencies. Copy service file to host machine. Configure service file and start node-express service.
