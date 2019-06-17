@@ -1,6 +1,6 @@
 # DevOps-O6
 ## Project breakdown
-### ~/ansible - Main file directory
+### ~/ansible - Main file directory:
 
 * **ansible.cfg**: Configuration file for Ansible. When an ansible playbook is executed, Ansible will first search for an ansible.cfg file in the same directory before then looking in the Ansible install location/user home directory. By placing a config file here it allows the default Ansible conifuration options to be overwritten when this playbook is executed. This is used to set the Ansible inventory location to be the 'hosts' file which is found in the same directory.
 
@@ -14,12 +14,12 @@ The 'post_tasks' are completed at the end of the playbook, and currently consist
 
 <br/> 
 
-### ~/ansible/vars - System variable directory
+### ~/ansible/vars - System-wide variable directory:
 
 * **main.yml**: Any system-wide Ansible variables are defined here. As of now, this includes only the external ip address of the target machine, and a list of the packages which are required for the playbook to run. These are included ([see difference between include and import](https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_includes.html)) during the pre-task phase and may be used in the playbook from that point [onwards](https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html).
 
-### ~/ansible/files - Main file directory
+### ~/ansible/files - Main file directory:
 
 
-### ~/ansible/roles - Ansible role directory
+### ~/ansible/roles - Ansible role directory:
 
