@@ -1,3 +1,5 @@
+# DevOps-O6
+## Project breakdown
 ### ~/ansible - Main file directory
 
 **ansible.cfg**: Configuration file for Ansible. When an ansible playbook is executed, Ansible will first search for an ansible.cfg file in the same directory before then looking in the Ansible install location/user home directory. By placing a config file here it allows the default Ansible conifuration options to be overwritten when this playbook is executed. This is used to set the Ansible inventory location to be the 'hosts' file which is found in the same directory.
@@ -10,10 +12,11 @@ The 'post_tasks' are completed at the end of the playbook, and currently consist
 
 **setup.yml**: This file describes all of the tasks completed during the pre_tasks phase. The first two tasks utilise the Ansible ['apt' module] (https://docs.ansible.com/ansible/latest/modules/apt_module.html) to update and upgrade all packages on the target machine to their latest versions. The next task uses a list variable named 'packages' to install all of the initial dependecies required for this playbook. These are defined in the vars/main.yml file. More information on the usage of variables with Ansible can be found [here](https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html). Using the ['file' module](https://docs.ansible.com/ansible/latest/modules/file_module.html), Ansible then checks to see if the machine has an existing version of the react, and node/express application files, and deletes them if they are present. Finally, [the systemd](https://docs.ansible.com/ansible/latest/modules/systemd_module.html) daemon is reloaded to ensure the system state is up-to-date. 
 
+<br/> 
+
 ### ~/ansible/vars - System variable directory
 
-**main.yml**:
-
+**main.yml**: Any system-wide Ansible variables are defined here. As of now, this includes only the external ip address of the target machine, and a list of the packages which are required for the playbook to run. These are included ([see difference between include and import](https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_includes.html))
 
 ### ~/ansible/files - Main file directory
 
