@@ -1,6 +1,7 @@
 # DevOps-O6
 ## Task list
 
+0. Documentation.
 1. Fix hard-coded strings in setup.yml.
 2. Fix hard-coded nginx.conf file (use lineinfile module after copying).
 3. Host mongoDB remotely.
