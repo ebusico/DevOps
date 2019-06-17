@@ -16,7 +16,7 @@ The 'post_tasks' are completed at the end of the playbook, and currently consist
 
 ### ~/ansible/vars - System variable directory
 
-**main.yml**: Any system-wide Ansible variables are defined here. As of now, this includes only the external ip address of the target machine, and a list of the packages which are required for the playbook to run. These are included ([see difference between include and import](https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_includes.html))
+**main.yml**: Any system-wide Ansible variables are defined here. As of now, this includes only the external ip address of the target machine, and a list of the packages which are required for the playbook to run. These are included ([see difference between include and import](https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_includes.html)) during the pre-task phase and may be used in the playbook from that point [onwards](https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html).
 
 ### ~/ansible/files - Main file directory
 
